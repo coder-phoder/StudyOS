@@ -3,53 +3,22 @@ import AppLogo from '../../Components/Common/AppLogo'
 
 export default function LandingPage() {
   return (
-    <main className="min-h-screen overflow-hidden bg-slate-950 text-white">
-      <div className="absolute inset-x-0 top-0 -z-0 h-[34rem] bg-[radial-gradient(circle_at_80%_12%,rgba(34,211,238,0.22),transparent_28rem),radial-gradient(circle_at_15%_5%,rgba(99,102,241,0.18),transparent_24rem)]" />
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-5 sm:px-10">
-        <header className="flex items-center justify-between">
-          <AppLogo light />
-          <Link
-            to="/login"
-            className="rounded-xl border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-cyan-300 hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-300"
-          >
-            Log in
+    <main className="relative grid min-h-screen place-items-center overflow-hidden bg-slate-950 px-5 py-10 text-slate-100">
+      <div className="absolute left-5 top-5"><AppLogo light /></div>
+      <section className="w-full max-w-2xl text-center">
+        <h1 className="text-[28px] font-bold tracking-[-0.01em]">Who&apos;s studying today?</h1>
+        <div className="mt-9 flex flex-wrap justify-center gap-6 sm:gap-10">
+          <Link to="/login" className="group flex w-[150px] flex-col items-center gap-3.5 opacity-[0.88] transition hover:-translate-y-1 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-cyan-400/50">
+            <span className="grid h-[120px] w-[120px] place-items-center rounded-[20px] border-2 border-transparent bg-violet-400/20 [font-family:var(--font-display)] text-4xl font-bold text-cyan-400 transition group-hover:border-cyan-400 group-hover:shadow-[0_0_24px_rgba(196,181,253,0.35)]">↪</span>
+            <span className="text-sm font-semibold text-slate-400 transition group-hover:text-slate-100">Log in</span>
           </Link>
-        </header>
-
-        <section className="flex flex-1 items-center py-16 sm:py-24">
-          <div className="max-w-3xl">
-            <p className="mb-5 inline-flex rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-sm font-semibold text-cyan-200">
-              Your calm corner for focused learning
-            </p>
-            <h1 className="max-w-3xl text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl">
-              A simpler home for your study life.
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
-              Start your StudyOS profile and keep your learning journey organized from one thoughtful place.
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link
-                to="/register"
-                className="rounded-xl bg-cyan-400 px-5 py-3 text-center text-sm font-bold text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:ring-offset-2 focus:ring-offset-slate-950"
-              >
-                Create your account
-              </Link>
-              <Link
-                to="/login"
-                className="rounded-xl border border-slate-700 px-5 py-3 text-center text-sm font-bold text-slate-100 transition hover:border-slate-500 hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-300"
-              >
-                I already have an account
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="grid gap-3 border-t border-slate-800 pt-6 text-sm text-slate-400 sm:grid-cols-3">
-          <p><span className="font-semibold text-slate-200">Personal</span> — your profile, your space.</p>
-          <p><span className="font-semibold text-slate-200">Secure</span> — sessions use httpOnly cookies.</p>
-          <p><span className="font-semibold text-slate-200">Ready</span> — begin in a few moments.</p>
-        </section>
-      </div>
+          <Link to="/register" className="group flex w-[150px] flex-col items-center gap-3.5 opacity-[0.88] transition hover:-translate-y-1 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-cyan-400/50">
+            <span className="grid h-[120px] w-[120px] place-items-center rounded-[20px] border-2 border-dashed border-violet-400/40 text-[40px] font-normal text-violet-400 transition group-hover:border-solid group-hover:bg-violet-400/14 group-hover:shadow-[0_0_24px_rgba(196,181,253,0.35)]">+</span>
+            <span className="text-sm font-semibold text-slate-400 transition group-hover:text-slate-100">Add profile</span>
+          </Link>
+        </div>
+        <p className="mt-10 text-[13px] text-slate-400">Sign in to continue with your private StudyOS workspace.</p>
+      </section>
     </main>
   )
 }
