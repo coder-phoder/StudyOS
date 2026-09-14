@@ -291,6 +291,7 @@ export default function MyNotesPage() {
             <AppLogo light />
             <nav aria-label="User navigation" className="flex items-center gap-1 text-sm font-semibold">
               <Link to="/user/home" className="rounded-lg px-3 py-2 text-slate-400 transition hover:text-white">Profile</Link>
+              <Link to="/user/semesters" className="rounded-lg px-3 py-2 text-slate-400 transition hover:text-white">Semesters</Link>
               <Link to="/user/notes" className="rounded-lg bg-violet-400/15 px-3 py-2 text-violet-200">My Notes</Link>
             </nav>
           </div>

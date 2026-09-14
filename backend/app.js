@@ -8,6 +8,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user.routes');
 const noteRoutes = require('./routes/note.routes');
+const semesterRoutes = require('./routes/semester.routes');
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/users', userRoutes);
 app.use('/api/notes', noteRoutes);
+app.use('/api/semesters', semesterRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
