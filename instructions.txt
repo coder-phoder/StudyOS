@@ -1,0 +1,31 @@
+STRICT RULES — follow all of these at all times:
+
+BACKEND RULES:
+- db.js lives at backend/db/db.js (MongoDB connection only, no other logic)
+- All models go in backend/models/ named as <entity>.model.js
+- All controllers go in backend/controllers/ named as <entity>.controller.js
+- All routes go in backend/routes/ named as <entity>.routes.js
+- All middlewares go in backend/middlewares/ named as <entity>.middleware.js
+- Do NOT create any folders named: api/, utils/, src/, server/, config/
+- Use Express.js, Mongoose, JWT (jsonwebtoken), bcryptjs, cookie-parser, cors, dotenv
+- JWT tokens stored in httpOnly cookies
+- All API responses must follow: { success: true/false, message: "...", data: {} }
+- Use async/await with try/catch in all controllers
+
+FRONTEND RULES:
+- Use React (Vite), React Router v6, Axios, TailwindCSS
+- pages/ and components/ live inside src/
+- pages/ sub-folders: Common/, SuperAdmin/, Admin/, User/
+- components/ sub-folders: Common/, SuperAdmin/, Admin/, User/
+- Every file in pages/ must end with "Page" (e.g., LoginPage.jsx)
+- Component files use descriptive names (e.g., Navbar.jsx, CardItem.jsx)
+- App.jsx handles all routing
+- Use React Context or Zustand for auth state (store: role, token, phone)
+- UI must be minimal, clean, and easy to use — use TailwindCSS utility classes only
+- No external UI libraries (no MUI, no Chakra) — pure Tailwind
+- All forms must show loading states and error messages
+- Axios baseURL points to http://localhost:4000
+- Use axios withCredentials: true for cookie-based auth
+
+Never skip error handling. Never leave placeholder TODOs. Write complete, working code 
+for every file in the phase.
