@@ -6,6 +6,7 @@ import LandingPage from './Pages/Common/LandingPage'
 import LoginPage from './Pages/Common/LoginPage'
 import RegisterPage from './Pages/Common/RegisterPage'
 import UserHomePage from './Pages/User/UserHomePage'
+import MyNotesPage from './Pages/Notes/MyNotesPage'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="/login" element={<PublicOnlyRoute><LoginPage /></PublicOnlyRoute>} />
           <Route path="/register" element={<PublicOnlyRoute><RegisterPage /></PublicOnlyRoute>} />
           <Route path="/user/home" element={<ProtectedRoute><UserHomePage /></ProtectedRoute>} />
+          <Route path="/user/notes" element={<ProtectedRoute><MyNotesPage /></ProtectedRoute>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>

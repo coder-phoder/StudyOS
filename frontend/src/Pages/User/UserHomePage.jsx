@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import AppLogo from '../../Components/Common/AppLogo'
 import { useAuth } from '../../Context/AuthContext'
 
@@ -84,7 +84,13 @@ export default function UserHomePage() {
     <main className="min-h-screen bg-slate-950 text-slate-100">
       <header className="border-b border-slate-800 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-          <AppLogo light />
+          <div className="flex items-center gap-6">
+            <AppLogo light />
+            <nav aria-label="User navigation" className="flex items-center gap-1 text-sm font-semibold">
+              <Link to="/user/home" className="rounded-lg bg-violet-400/15 px-3 py-2 text-violet-200">Profile</Link>
+              <Link to="/user/notes" className="rounded-lg px-3 py-2 text-slate-400 transition hover:text-white">My Notes</Link>
+            </nav>
+          </div>
           <button
             type="button"
             onClick={() => void handleLogout()}
