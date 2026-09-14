@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import AppLogo from '../../components/Common/AppLogo'
-import { useAuth } from '../../context/AuthContext'
+import AppLogo from '../../Components/Common/AppLogo'
+import { useAuth } from '../../Context/AuthContext'
 
 const profileDateFormatter = new Intl.DateTimeFormat(undefined, {
   day: 'numeric',

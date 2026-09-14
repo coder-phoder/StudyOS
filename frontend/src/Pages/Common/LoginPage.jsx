@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import AppLogo from '../../components/Common/AppLogo'
-import { useAuth } from '../../context/AuthContext'
+import AppLogo from '../../Components/Common/AppLogo'
+import { useAuth } from '../../Context/AuthContext'
 
 const initialForm = { identifier: '', password: '' }
 

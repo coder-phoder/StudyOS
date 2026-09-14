@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import AppLogo from '../../components/Common/AppLogo'
+import AppLogo from '../../Components/Common/AppLogo'
 
 export default function LandingPage() {
   return (

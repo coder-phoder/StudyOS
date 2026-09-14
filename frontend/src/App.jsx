@@ -1,11 +1,11 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import ProtectedRoute from './components/Common/ProtectedRoute'
-import PublicOnlyRoute from './components/Common/PublicOnlyRoute'
-import { AuthProvider } from './context/AuthContext'
-import LandingPage from './pages/Common/LandingPage'
-import LoginPage from './pages/Common/LoginPage'
-import RegisterPage from './pages/Common/RegisterPage'
-import UserHomePage from './pages/User/UserHomePage'
+import ProtectedRoute from './Components/Common/ProtectedRoute'
+import PublicOnlyRoute from './Components/Common/PublicOnlyRoute'
+import { AuthProvider } from './Context/AuthContext'
+import LandingPage from './Pages/Common/LandingPage'
+import LoginPage from './Pages/Common/LoginPage'
+import RegisterPage from './Pages/Common/RegisterPage'
+import UserHomePage from './Pages/User/UserHomePage'
 
 export default function App() {
   return (

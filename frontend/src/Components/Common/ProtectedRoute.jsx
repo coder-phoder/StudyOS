@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../Context/AuthContext'
 import LoadingScreen from './LoadingScreen'
 
 export default function ProtectedRoute({ children }) {
