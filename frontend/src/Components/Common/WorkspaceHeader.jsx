@@ -66,7 +66,7 @@ export default function WorkspaceHeader({ activeTab, beforeLogout }) {
           <nav aria-label="Workspace navigation" className="flex max-w-full overflow-x-auto rounded-full border border-white/[0.09] bg-white/[0.045] p-1">
             <Link to="/user/home" className={tabClass('Dashboard')}>Dashboard</Link>
             <Link to="/user/semesters" className={tabClass('Semesters')}>Semesters</Link>
-            <span aria-disabled="true" title="Calendar is not part of the current workspace" className={`${tabClass('Calendar')} cursor-not-allowed opacity-50`}>Calendar</span>
+            <Link to="/user/calendar" className={tabClass('Calendar')}>Calendar</Link>
             <span aria-disabled="true" title="Coding Time is not part of the current workspace" className={`${tabClass('Coding Time')} cursor-not-allowed whitespace-nowrap opacity-50`}>Coding Time</span>
             <Link to="/user/notes" className={tabClass('Notes')}>Notes</Link>
           </nav>
