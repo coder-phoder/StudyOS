@@ -67,7 +67,7 @@ export default function WorkspaceHeader({ activeTab, beforeLogout }) {
             <Link to="/user/home" className={tabClass('Dashboard')}>Dashboard</Link>
             <Link to="/user/semesters" className={tabClass('Semesters')}>Semesters</Link>
             <Link to="/user/calendar" className={tabClass('Calendar')}>Calendar</Link>
-            <span aria-disabled="true" title="Coding Time is not part of the current workspace" className={`${tabClass('Coding Time')} cursor-not-allowed whitespace-nowrap opacity-50`}>Coding Time</span>
+            <Link to="/user/coding-time" className={`${tabClass('Coding Time')} whitespace-nowrap`}>Coding Time</Link>
             <Link to="/user/notes" className={tabClass('Notes')}>Notes</Link>
           </nav>
         </div>
