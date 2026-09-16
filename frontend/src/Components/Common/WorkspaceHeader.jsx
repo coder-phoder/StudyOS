@@ -23,38 +23,15 @@ const formatDate = (date) => new Intl.DateTimeFormat(undefined, {
   day: 'numeric',
 }).format(date)
 
-export default function WorkspaceHeader({ activeTab, beforeLogout }) {
+export default function WorkspaceHeader({ activeTab }) {
   const navigate = useNavigate()
-  const { user, logout } = useAuth()
+  const { user } = useAuth()
   const [now, setNow] = useState(() => new Date())
-  const [isLoggingOut, setIsLoggingOut] = useState(false)
-  const [error, setError] = useState('')
 
   useEffect(() => {
     const timer = window.setInterval(() => setNow(new Date()), 1000)
     return () => window.clearInterval(timer)
   }, [])
-
-  const handleLogout = async () => {
-    setError('')
-    if (beforeLogout) {
-      try {
-        const canLogout = await beforeLogout()
-        if (!canLogout) return
-      } catch (logoutError) {
-        setError(logoutError.message || 'Unable to save your work before logging out.')
-        return
-      }
-    }
-    setIsLoggingOut(true)
-    try {
-      await logout()
-      navigate('/login', { replace: true })
-    } catch (logoutError) {
-      setError(logoutError.message || 'Unable to log out. Please try again.')
-      setIsLoggingOut(false)
-    }
-  }
 
   const tabClass = (tab) => `rounded-full px-4 py-2 text-[13px] font-semibold transition ${activeTab === tab ? 'bg-cyan-400/14 text-cyan-400 shadow-[inset_0_0_0_1px_rgba(196,181,253,0.35)]' : 'text-slate-400 hover:text-slate-100'}`
 
@@ -73,17 +50,16 @@ export default function WorkspaceHeader({ activeTab, beforeLogout }) {
         </div>
         <div className="flex shrink-0 items-center gap-2.5">
           <input type="search" readOnly aria-label="Global search" title="Search is not part of the current workspace" placeholder="Search topics, notes, tasks…" className="w-[200px] rounded-full border border-white/[0.09] bg-white/[0.045] px-3.5 py-2 text-[12.5px] text-slate-100 outline-none transition placeholder:text-slate-600 focus:w-60 focus:border-cyan-400/50 max-[720px]:hidden" />
-          <button type="button" onClick={() => void handleLogout()} disabled={isLoggingOut} title={user?.username || 'Profile'} className="flex items-center gap-2 rounded-full border border-white/[0.09] bg-white/[0.045] py-1 pl-1 pr-3.5 text-left transition hover:border-cyan-400/35 hover:bg-white/[0.075] disabled:cursor-not-allowed disabled:opacity-60 max-[640px]:pr-1">
+          <button type="button" onClick={() => navigate('/user/profile')} title="Open profile" className="flex items-center gap-2 rounded-full border border-white/[0.09] bg-white/[0.045] py-1 pl-1 pr-3.5 text-left transition hover:border-cyan-400/35 hover:bg-white/[0.075] max-[640px]:pr-1">
             <span className="grid h-[30px] w-[30px] place-items-center rounded-full bg-linear-to-br from-violet-400/40 to-violet-400/10 [font-family:var(--font-display)] text-[11px] font-bold text-cyan-400">{getInitials(user?.username)}</span>
               <span className="flex flex-col items-start leading-tight max-[640px]:hidden">
-              <span className="text-[11.5px] font-bold text-slate-100">{isLoggingOut ? 'Logging out…' : user?.username || 'StudyOS'}</span>
+              <span className="text-[11.5px] font-bold text-slate-100">{user?.username || 'StudyOS'}</span>
               <span className="font-mono text-[12.5px] tracking-[0.03em] text-cyan-400">{formatClock(now)}</span>
               <span className="font-mono text-[10px] tracking-[0.02em] text-slate-400">{formatDate(now)}</span>
             </span>
           </button>
         </div>
       </header>
-      {error && <p role="alert" className="-mt-3 mb-4 rounded-xl border border-rose-400/35 bg-rose-400/10 px-3 py-2 text-sm text-rose-100">{error}</p>}
     </>
   )
 }
