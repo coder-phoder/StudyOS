@@ -13,6 +13,7 @@ const calendarRoutes = require('./routes/calendar.routes');
 const todoRoutes = require('./routes/todo.routes');
 const codingSessionRoutes = require('./routes/codingSession.routes');
 const goalRoutes = require('./routes/goal.routes');
+const meridianRoutes = require('./routes/meridian.routes');
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
@@ -41,6 +42,7 @@ app.use('/api/calendar', calendarRoutes);
 app.use('/api/todos', todoRoutes);
 app.use('/api/coding-sessions', codingSessionRoutes);
 app.use('/api/goals', goalRoutes);
+app.use('/api/meridian', meridianRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

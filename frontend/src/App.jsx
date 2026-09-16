@@ -11,6 +11,7 @@ import SemestersPage from './Pages/User/SemestersPage'
 import CalendarPage from './Pages/User/CalendarPage'
 import CodingTimePage from './Pages/User/CodingTimePage'
 import ProfilePage from './Pages/User/ProfilePage'
+import MeridianAssistant from './Components/User/MeridianAssistant'
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/user/notes" element={<ProtectedRoute><MyNotesPage /></ProtectedRoute>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <MeridianAssistant />
       </BrowserRouter>
     </AuthProvider>
   )

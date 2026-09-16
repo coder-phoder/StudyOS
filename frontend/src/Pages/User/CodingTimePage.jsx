@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import axios from 'axios'
+import { useLocation } from 'react-router-dom'
 import WorkspaceHeader from '../../Components/Common/WorkspaceHeader'
 
 const api = axios.create({
@@ -55,6 +56,8 @@ function ErrorNotice({ message, onDismiss }) {
 }
 
 export default function CodingTimePage() {
+  const location = useLocation()
+  const shouldStartMeridianFocus = location.state?.meridianFocusCommand === 'start'
   const [sessions, setSessions] = useState([])
   const [subjects, setSubjects] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -63,8 +66,8 @@ export default function CodingTimePage() {
   const [timerLanguage, setTimerLanguage] = useState('JavaScript')
   const [freeTimer, setFreeTimer] = useState({ running: false, startedAt: null, elapsed: 0 })
   const [pomoLanguage, setPomoLanguage] = useState('JavaScript')
-  const [pomodoro, setPomodoro] = useState(INITIAL_POMODORO)
-  const [pomoStatus, setPomoStatus] = useState('Ready — pick a language and start a focus block')
+  const [pomodoro, setPomodoro] = useState(() => ({ ...INITIAL_POMODORO, running: shouldStartMeridianFocus }))
+  const [pomoStatus, setPomoStatus] = useState(() => shouldStartMeridianFocus ? 'Focus — started by Meridian' : 'Ready — pick a language and start a focus block')
   const [manualModalOpen, setManualModalOpen] = useState(false)
   const [customModalOpen, setCustomModalOpen] = useState(false)
   const [manualForm, setManualForm] = useState({ language: 'JavaScript', minutes: '30', date: localDateKey(), subject: '' })
@@ -257,6 +260,23 @@ export default function CodingTimePage() {
     setPomodoro((current) => ({ ...current, phase: 'work', total: current.workMinutes * 60, remaining: current.workMinutes * 60, running: false }))
     setPomoStatus('Ready — pick a language and start a focus block')
   }
+
+  useEffect(() => {
+    const handleMeridianFocus = (event) => {
+      const command = event.detail?.command
+      if (command === 'start') {
+        completionInProgress.current = false
+        setPomodoro((current) => ({ ...current, remaining: current.remaining || current.total, running: true }))
+        setPomoStatus('Focus — started by Meridian')
+      }
+      if (command === 'stop') {
+        setPomodoro((current) => ({ ...current, running: false }))
+        setPomoStatus('Paused by Meridian — resume when you are ready')
+      }
+    }
+    window.addEventListener('studyos:meridian-focus', handleMeridianFocus)
+    return () => window.removeEventListener('studyos:meridian-focus', handleMeridianFocus)
+  }, [])
 
   const saveCustomPomodoro = (event) => {
     event.preventDefault()

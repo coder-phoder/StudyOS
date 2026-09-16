@@ -65,3 +65,73 @@
     background: rgb(255 255 255 / 12%);
   }
 }
+
+/* Markdown and KaTeX output inside Meridian's reply bubbles. */
+.meridian-rich > div > :first-child { margin-top: 0; }
+.meridian-rich > div > :last-child { margin-bottom: 0; }
+.meridian-rich p { margin: 0 0 0.6em; }
+.meridian-rich strong { font-weight: 650; color: #e7e2f5; }
+.meridian-rich em { font-style: italic; }
+.meridian-rich del { opacity: 0.6; }
+.meridian-rich a { color: #bda8ff; text-decoration: underline; text-underline-offset: 2px; }
+.meridian-rich h1, .meridian-rich h2, .meridian-rich h3, .meridian-rich h4 {
+  margin: 0.9em 0 0.4em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.3;
+  color: #f2eee6;
+}
+.meridian-rich h1 { font-size: 1.25em; }
+.meridian-rich h2 { font-size: 1.14em; }
+.meridian-rich h3 { font-size: 1.05em; }
+.meridian-rich h4 { font-size: 1em; color: #c9c1d7; }
+.meridian-rich ul, .meridian-rich ol { margin: 0 0 0.6em; padding-left: 1.35em; }
+.meridian-rich ul { list-style: disc; }
+.meridian-rich ol { list-style: decimal; }
+.meridian-rich li { margin: 0.2em 0; }
+.meridian-rich li::marker { color: #bda8ff; }
+.meridian-rich blockquote {
+  margin: 0 0 0.6em;
+  padding: 0.1em 0 0.1em 0.75em;
+  border-left: 2px solid rgba(189, 168, 255, 0.45);
+  color: #c9c1d7;
+}
+.meridian-rich code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  padding: 0.12em 0.35em;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ddd5ff;
+}
+.meridian-rich pre {
+  margin: 0 0 0.6em;
+  padding: 0.7em 0.8em;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  background: rgba(5, 6, 11, 0.75);
+}
+.meridian-rich pre code { padding: 0; background: none; color: #e0dae8; line-height: 1.55; }
+.meridian-rich hr { margin: 0.9em 0; border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.meridian-rich table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 0 0.6em;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.93em;
+}
+.meridian-rich th, .meridian-rich td {
+  padding: 0.35em 0.6em;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: left;
+}
+.meridian-rich th { background: rgba(255, 255, 255, 0.05); font-weight: 600; color: #e7e2f5; }
+/* Wide equations scroll inside the bubble instead of stretching the panel. KaTeX makes the inner
+   .katex a block, which hides its real width from the scroll container, so it is sized to content. */
+.meridian-rich .katex-display { margin: 0.7em 0; overflow-x: auto; overflow-y: hidden; padding-bottom: 2px; }
+.meridian-rich .katex-display > .katex { display: inline-block; white-space: nowrap; max-width: none; }
+.meridian-rich .katex { font-size: 1.04em; }
+.meridian-rich .katex-error { color: #fda4af; }
